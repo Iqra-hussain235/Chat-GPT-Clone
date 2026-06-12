@@ -1,0 +1,64 @@
+/* .chats{
+    max-width: 700px;
+    overflow-y:scroll;
+    padding: 8rem;
+
+} */
+
+.chats {
+    max-width: 700px;
+    padding: 8rem;
+
+    /* Enable scrolling only when needed */
+    overflow-y: auto;
+
+    /* Hide scrollbar initially (for Chrome, Edge, Safari) */
+    scrollbar-width: none;      /* Firefox */
+    -ms-overflow-style: none;   /* IE + Edge */
+}
+
+.chats::-webkit-scrollbar {
+    width: 0px;       /* Hide scrollbar */
+}
+
+/* When overflow happens, show scrollbar on hover */
+.chats:hover::-webkit-scrollbar {
+    width: 6px;       /* Scrollbar visible on content overflow */
+}
+
+.chats:hover::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 10px;
+}
+
+.chats:hover::-webkit-scrollbar-track {
+    background: transparent;
+}
+.userDiv{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 0.9rem;
+}
+.gptDiv{
+    text-align: left;
+    font-size: 1.0rem;
+}
+
+
+.userMessage{
+    background-color: #323232;
+    padding: 10px 20px;
+    border-radius: 14px;
+    margin-left:15rem;
+    max-width:500px;
+    width: fit-content;
+
+}
+.hljs{
+    border-radius: 14px !important;
+
+}
+
+pre{
+    white-space: pre-wrap;
+}
