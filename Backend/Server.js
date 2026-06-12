@@ -4,12 +4,11 @@ import cors from "cors";
 import mongoose from "mongoose";
 import chatRoutes from "./routes/chat.js";
 // import authRoutes from "./routes/auth.js";
-
 mongoose.set("strictQuery", true);
 
 
 const app=express();
-const PORT=8080;
+const PORT= process.env.PORT || 8080;
 
 app.use(cors());
 app.use(express.json());
@@ -25,9 +24,10 @@ app.listen(PORT,()=>{
 
 const connectDB=async()=>{
   try{
-
-    mongoose.connect('mongodb://127.0.0.1:27017/test')
+//mongodb://127.0.0.1:27017/test
+    mongoose.connect(process.env.MONGODB_URL)
     .then(() => console.log('Connected!'));
+    console.log("MONGODB_URL:", process.env.MONGODB_URL);
   }
   catch(err){
     console.log("server running on Database",err);
