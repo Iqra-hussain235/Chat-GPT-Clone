@@ -10,7 +10,11 @@ mongoose.set("strictQuery", true);
 const app=express();
 const PORT= process.env.PORT || 8080;
 
-app.use(cors());
+app.use(cors({
+  origin: "https://chat-gpt-clone-2.onrender.com",
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 app.use(express.json());
 
 // app.use("/api", authRoutes); 

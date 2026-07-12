@@ -6,6 +6,7 @@ import { useContext,useState,useEffect} from "react";
 // import { useNavigate } from 'react-router-dom';
 import { ScaleLoader } from "react-spinners";
 
+const API_URL = import.meta.env.VITE_API_URL;
 
 function ChatWindow() {
     const {prompt,setPrompt,reply,setReply,currThreadId,setPrevChats,prevChats,setNewChat}=useContext(MyContext);
@@ -39,7 +40,7 @@ function ChatWindow() {
             })
         };
         try{
-         const response = await fetch("http://localhost:8080/api/chat",options);
+         const response = await fetch(`${API_URL}/api/chat`,options);
          const res =await response.json();
          console.log(res);
          setReply(res.reply);

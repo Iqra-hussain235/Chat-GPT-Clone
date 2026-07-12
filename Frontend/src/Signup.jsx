@@ -3,6 +3,8 @@ import { MyContext } from "./MyContext";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Signup() {
   
     const { setToken, setIsLoggedIn } = useContext(MyContext); 
@@ -20,7 +22,7 @@ function Signup() {
   };
 
   const signupUser = async () => {
-    const res = await fetch("http://localhost:8080/api/signup", {
+    const res = await fetch(`${API_URL}/api/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form)

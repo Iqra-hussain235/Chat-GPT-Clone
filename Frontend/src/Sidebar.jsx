@@ -5,13 +5,14 @@ import {useEffect} from "react";
 import logo from "./assets/logo.png";
 import { v1 as uuidv1} from 'uuid';
 
+const API_URL = import.meta.env.VITE_API_URL;
 
 function Sidebar(){
   const {allThreads,setAllThreads,currThreadId,setNewChat,setReply,setPrompt,setCurrThreadId,setPrevChats,isLoggedIn}=useContext(MyContext);
 
   const getAllThreads=async()=>{
     try{
-     const response=await fetch("http://localhost:8080/api/thread");
+     const response=await fetch(`${API_URL}/api/thread`);
      const res =await response.json();
      const filteredData=res.map(thread =>({
       threadId:thread.threadId,
@@ -40,7 +41,7 @@ function Sidebar(){
     setCurrThreadId(newThreadId);
 
     try{
-     const response=await fetch(`http://localhost:8080/api/thread/${newThreadId}`)
+     const response=await fetch(`${API_URL}/api/thread/${newThreadId}`)
       const res =await response.json();
       console.log("chats for thread:",res);
       setPrevChats(res);
@@ -56,7 +57,7 @@ function Sidebar(){
 
   const deleteThread=async(threadId)=>{
     try{
-      const response = await fetch(`http://localhost:8080/api/thread/${threadId}`,
+      const response = await fetch(`${API_URL}/api/thread/${threadId}`,
         {method:"DELETE"});
         const res = await response.json();
         console.log(res);
