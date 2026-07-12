@@ -1,13 +1,45 @@
-.sidebar{
-    background-color: #171717;
-    color: #b4b4b4;
-    height: 100vh;
+.sidebar {
+    background: linear-gradient(180deg, #121726 0%, #0f1220 100%);
+    color: #cbd5e1;
+    min-height: 100vh;
     width: 320px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 0.8rem;
+    box-sizing: border-box;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    transition: width 180ms ease;
 }
-.logo{
+
+.sidebar.collapsed {
+    width: 72px;
+    padding: 0.8rem 0.6rem;
+}
+
+.sidebar.collapsed .sidebarTop {
+    align-items: center;
+}
+
+.sidebar.collapsed .sidebarHeader,
+.sidebar.collapsed .sidebarHeader .toggleSidebarBtn {
+    width: 100%;
+}
+
+.sidebar.collapsed .sidebarHint,
+.sidebar.collapsed .history,
+.sidebar.collapsed .button,
+.sidebar.collapsed .sign {
+    display: none;
+}
+
+.sidebarTop {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.logo {
     height: 30px;
     width: 30px;
     background-color: white;
@@ -15,64 +47,126 @@
     object-fit: cover;
 }
 
-.button{
+.button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin:10px;
-    padding: 5px;
+    width: 100%;
+    margin: 0;
+    padding: 0.7rem 0.9rem;
     border-radius: 14px;
-    background-color: transparent;
-    border:solid 0.5px rgba(255, 255, 255, 0.5) 1px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
     cursor: pointer;
-}
-button:hover{
-    background-color: rgba(180, 180, 180, 0.05);
+    transition: transform 180ms ease, background 180ms ease;
 }
 
-button span{
+.button:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.12);
+}
+
+.sidebarHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    position: relative;
+    padding-right: 48px;
+}
+
+.toggleSidebarBtn {
+    position: absolute;
+    top: 0.7rem;
+    right: 0.7rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.16);
+    background: rgba(15, 23, 42, 0.96);
+    color: #f8fafc;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+    cursor: pointer;
+    transition: background 180ms ease, transform 180ms ease, border-color 180ms ease;
+}
+
+.toggleSidebarBtn:hover {
+    transform: translateY(-1px);
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.24);
+}
+
+.sidebar.collapsed .sidebarHeader {
+    padding-right: 0;
+}
+
+.button span {
     font-size: 20px;
-   
-}
-.history{
-    padding: 10px;
-    margin: 10px;
-    height:100%;
 }
 
-.history li{
+.sidebarHint {
+    padding: 0.25rem 0.3rem 0;
+}
+
+.sidebarHint p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: #f8fafc;
+}
+
+.sidebarHint span {
+    font-size: 0.78rem;
+    color: #94a3b8;
+}
+
+.history {
+    padding: 0.2rem 0;
+    margin: 0;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.history li {
     list-style-type: none;
     cursor: pointer;
-    padding: 2px 5px;
-    margin-bottom: 0.3rem;
+    padding: 0.7rem 0.7rem;
+    margin-bottom: 0.35rem;
     font-size: 14px;
-    border: solid 10px transparent;
+    border-radius: 10px;
     position: relative;
+    transition: background 180ms ease, transform 180ms ease;
 }
 
-.history li:hover{
-      background-color: rgba(180, 180, 180, 0.05);
-      border-radius: 10px;
+.history li:hover {
+    background: rgba(180, 180, 180, 0.12);
+    transform: translateX(2px);
 }
-.sign{
-    padding: 10px;
-    margin:10px;
-    font-size:14px;
+
+.sign {
+    padding: 0.8rem 0 0.2rem;
+    margin: 0;
+    font-size: 14px;
     text-align: center;
-    border-top:solid 0.25px rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255,255,255,0.08);
 }
-.fa-trash{
+
+.fa-trash {
     opacity: 0;
     position: absolute;
     right: 10px;
-   
+    top: 50%;
+    transform: translateY(-50%);
 }
-.history li:hover .fa-trash{
+
+.history li:hover .fa-trash {
     opacity: 1;
     color: #fff;
 }
-.fa-trash:hover{
+
+.fa-trash:hover {
     opacity: 1;
     color: #f87171 !important;
-    
 }
